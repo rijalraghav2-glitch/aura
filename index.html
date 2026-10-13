@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AURA Café & Kitchen</title>
+
+    <meta name="description" content="AURA Café & Kitchen — premium coffee, fresh food and memorable moments.">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f8f6f1;
+            color: #1d1d1d;
+        }
+
+        /* NAVIGATION */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(248, 246, 241, 0.92);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1d1d1d;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            color: #9b6b43;
+        }
+
+        .nav-btn {
+            background: #1d1d1d;
+            color: white !important;
+            padding: 12px 20px;
+            border-radius: 30px;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 7% 70px;
+            background:
+                linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.45)),
+                url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=85");
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero small {
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 7vw, 90px);
+            line-height: 0.95;
+            margin: 20px 0;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.7;
+            max-width: 550px;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            padding: 15px 28px;
+            border-radius: 30px;
+            background: white;
+            color: #1d1d1d;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        .btn-dark {
+            background: #1d1d1d;
+            color: white;
+        }
+
+        /* GENERAL */
+
+        section {
+            padding: 100px 7%;
+        }
+
+        .section-title {
+            max-width: 650px;
+            margin-bottom: 50px;
+        }
+
+        .section-title span {
+            color: #9b6b43;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+
+        .section-title h2 {
+            font-size: 48px;
+            margin: 12px 0;
+        }
+
+        .section-title p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* MENU */
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .menu-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            transition: 0.3s;
+            border: 1px solid #eee;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+        }
+
+        .menu-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .menu-card p {
+            color: #777;
+            line-height: 1.6;
+        }
+
+        .price {
+            margin-top: 20px;
+            font-weight: 800;
+            color: #9b6b43;
+        }
+
+        /* ABOUT */
+
+        .about {
+            background: #1d1d1d;
+            color: white;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .about img {
+            width: 100%;
+            border-radius: 20px;
+        }
+
+        .about p {
+            color: #bbb;
+            line-height: 1.8;
+            margin-top: 20px;
+        }
+
+        /* REVIEWS */
+
+        .reviews {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .review {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+        }
+
+        .stars {
+            color: #c48b55;
+            margin-bottom: 15px;
+        }
+
+        .review p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .review strong {
+            display: block;
+            margin-top: 20px;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            text-align: center;
+            background: #eee9df;
+        }
+
+        .contact h2 {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        /* FOOTER */
+
+        footer {
+            background: #1d1d1d;
+            color: white;
+            padding: 35px 7%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        footer p {
+            color: #999;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            nav ul {
+                display: none;
+            }
+
+            .menu-grid,
+            .reviews,
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: 90vh;
+            }
+
+            .section-title h2,
+            .contact h2 {
+                font-size: 38px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+        <div class="logo">AURA.</div>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+        </ul>
+
+        <a class="nav-btn" href="#contact">Book a Table</a>
+    </nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <small>CAFÉ • KITCHEN • EXPERIENCE</small>
+
+            <h1>Good food.<br>Good mood.</h1>
+
+            <p>
+                A modern café created for slow mornings,
+                meaningful conversations and unforgettable evenings.
+            </p>
+
+            <a href="#menu" class="btn">Explore Menu</a>
+
+            <a href="#contact" class="btn btn-dark">Book a Table</a>
+
+        </div>
+
+    </section>
+
+
+    <!-- MENU -->
+
+    <section id="menu">
+
+        <div class="section-title">
+
+            <span>Our Menu</span>
+
+            <h2>Made fresh.<br>Served with care.</h2>
+
+            <p>
+                From handcrafted coffee to delicious meals,
+                everything is prepared with quality ingredients.
+            </p>
+
+        </div>
+
+
+        <div class="menu-grid">
+
+            <div class="menu-card">
+                <h3>Signature Cappuccino</h3>
+                <p>Rich espresso with silky steamed milk and a smooth finish.</p>
+                <div class="price">Rs. 280</div>
+            </div>
+
+            <div class="menu-card">
+                <h3>Classic Pasta</h3>
+                <p>Fresh pasta tossed with our house-made creamy sauce.</p>
+                <div class="price">Rs. 520</div>
+            </div>
+
+            <div class="menu-card">
+                <h3>Chocolate Cake</h3>
+                <p>Rich chocolate cake served with our signature cream.</p>
+                <div class="price">Rs. 350</div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+
+        <img
+            src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=1200&q=85"
+            alt="AURA Cafe interior"
+        >
+
+        <div>
+
+            <span>OUR STORY</span>
+
+            <h2>More than just a café.</h2>
+
+            <p>
+                AURA was created around one simple idea:
+                great spaces create great memories.
+                Our café combines thoughtful design,
+                quality food and warm hospitality.
+            </p>
+
+            <p>
+                Whether you're meeting friends, working on
+                your next big idea or simply enjoying a quiet
+                coffee, there's always a place for you here.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- REVIEWS -->
+
+    <section id="reviews">
+
+        <div class="section-title">
+
+            <span>Guest Reviews</span>
+
+            <h2>Loved by our guests.</h2>
+
+        </div>
+
+
+        <div class="reviews">
+
+            <div class="review">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    "Beautiful atmosphere, amazing coffee
+                    and genuinely friendly staff."
+                </p>
+
+                <strong>— Aarav</strong>
+
+            </div>
+
+
+            <div class="review">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    "The perfect place to meet friends.
+                    The food was excellent."
+                </p>
+
+                <strong>— Sarah</strong>
+
+            </div>
+
+
+            <div class="review">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    "One of my favorite cafés in the city.
+                    Definitely coming back."
+                </p>
+
+                <strong>— Rohan</strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section class="contact" id="contact">
+
+        <h2>Let's make memories.</h2>
+
+        <p>
+            Thamel, Kathmandu · Open daily 8 AM – 10 PM
+        </p>
+
+        <a href="tel:+9779800000000" class="btn btn-dark">
+            Call Us
+        </a>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <strong>AURA.</strong>
+
+        <p>© 2026 AURA Café & Kitchen. Demo website.</p>
+
+    </footer>
+
+</body>
+</html>
